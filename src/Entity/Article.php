@@ -37,6 +37,11 @@ class Article
      */
     private $shortDesc;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Content::class, inversedBy="articles")
+     */
+    private $content;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Article
     public function setShortDesc(?string $shortDesc): self
     {
         $this->shortDesc = $shortDesc;
+
+        return $this;
+    }
+
+    public function getContent(): ?Content
+    {
+        return $this->content;
+    }
+
+    public function setContent(?Content $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }
