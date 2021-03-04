@@ -27,13 +27,16 @@ class ArticleController extends AbstractController
     {
         $articles = $this->articleRepository->findAllArticleWithContent();
 
-        foreach($articles as $article) {
+        /*foreach($articles as $article) {
             $content = $this->contentRepository->find($article->getContent());
-            dd($content->thematics->getName());
+            foreach($content->thematics as $theme) {
+                dd($theme->getName);
+            }
+            dd($content->thematics);
             $thematics = $content->getThematics();
-            dd($thematics->name);
+            dd($thematics);
             
-        }
+        }*/
 
         $menu = $this->menuService->createMenu();
         return $this->render('article/articles.html.twig', [

@@ -31,7 +31,7 @@ body {
         display: flex;
 
         width: 90%;
-        height: 80%;
+        height: 110%;
         
         & .border-menu {
             flex-grow: 0.5;
@@ -128,7 +128,7 @@ body {
             
                     position: absolute;
             
-                    bottom: -50px;
+                    bottom: -30px;
                     right: -30px;
                     z-index: 1;
                 }

@@ -4,8 +4,11 @@
 
 {% block body %}
 <ul> 
-{% for article in articles.content.thematics %}
-    <li>{{article.name}} </li>
+{% for article in articles %}
+    <li>{{article.title}} </li>
+    {% for theme in article.content.thematics%}
+    <li>{{theme.name}}</li>
+    {% endfor %}
 {% endfor %}
 </ul>
 {% endblock %}
