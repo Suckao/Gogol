@@ -25,15 +25,34 @@ class ArticleRepository extends ServiceEntityRepository
     public function findArticleByPublishContent()
     {
         $value = 1;
-        return $this->createQueryBuilder('a')
+            $qb = $this->createQueryBuilder('a');
+            $qb ->select('a', 'c', 'ct')
             ->join('a.content', 'c')
+            ->join('c.thematics', 'ct')
             ->andWhere('c.published = :val')
             ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+            ->orderBy('c.publicationDate', 'ASC');
+            $results = $qb->getQuery()->getResult();
+
+            return $results;
+    }
+
+        /**
+     * @return Article[] Returns an array of Article objects
+     */
+    public function findAllArticleWithContent()
+    {
+        $value = 1;
+            $qb = $this->createQueryBuilder('a');
+            $qb ->select('a', 'c', 'ct')
+            ->join('a.content', 'c')
+            ->join('c.thematics', 'ct')
+            ->andWhere('c.published = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.publicationDate', 'ASC');
+            $results = $qb->getQuery()->getResult();
+
+            return $results;
     }
 
     // /**

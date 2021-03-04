@@ -35,7 +35,7 @@ class Thematics
     private $bgColor;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Content::class, mappedBy="thematics")
+     * @ORM\ManyToMany(targetEntity=Content::class, mappedBy="thematics", cascade={"all"})
      */
     private $contents;
 

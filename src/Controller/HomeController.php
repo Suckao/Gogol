@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\MenuService;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,43 +11,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
 
-    public function __construct(ArticleRepository $articleRepository)
+    public function __construct(ArticleRepository $articleRepository, MenuService $menuService)
     {
         $this->articleRepository = $articleRepository;
+        $this->menuService = $menuService;
     }
 
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-
-        $title = "Gogol";
-
-        $leftMenuTitle = array(
-            [
-                "name" => "Articles",
-                "icon" => "fas fa-bullhorn"
-            ],
-            [
-                "name" => "Vidéos",
-                "icon" => "fas fa-video"
-            ],
-            [
-                "name" => "Profil",
-                "icon" => "fas fa-cat"
-            ],
-            [
-                "name" => "Contact",
-                "icon" => "fas fa-paper-plane"
-            ]
-        );
+        $menu = $this->menuService->createMenu();
         
         $article = $this->articleRepository->findArticleByPublishContent();
 
-        $data['leftMenuTitle'] = $leftMenuTitle;
-        $data['title'] = $title;
-
         return $this->render('home/index.html.twig', [
-            'data' => $data,
+            'menu' => $menu,
             'articles' => $article
         ]);
     }

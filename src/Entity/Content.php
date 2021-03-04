@@ -40,9 +40,10 @@ class Content
     private $publicationDate;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Thematics::class, inversedBy="contents")
+     * @ORM\ManyToMany(targetEntity=Thematics::class, inversedBy="contents", orphanRemoval=true)
+     * @ORM\JoinTable(name="content_thematics")
      */
-    private $thematics;
+    public $thematics;
 
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="content")

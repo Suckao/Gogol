@@ -22,12 +22,12 @@
 		</head>
 	<body>
 		<div class="title-bar">
-			<h1>{{data.title}}</h1>
+			<h1>{{menu.title}}</h1>
 		</div>
 		<div class="container">
 			<div class="border-menu">
 				<ul>
-					{% for menuTitle in data.leftMenuTitle %}
+					{% for menuTitle in menu.leftMenuTitle %}
 						<li>
 							<div>
 								<a href="#">{{menuTitle.name}}</a>
