@@ -11,6 +11,10 @@ body {
     background: linear-gradient(20deg, rgba(2,0,36,1) 0%, rgba(9,81,121,0.711922268907563) 21%, rgba(0,212,255,1) 100%);
     height: 100%;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     & .title-bar {
         display: flex;
@@ -26,7 +30,7 @@ body {
     & .container {
         display: flex;
 
-        width: 100%;
+        width: 90%;
         height: 80%;
         
         & .border-menu {
@@ -39,7 +43,7 @@ body {
             opacity: 0.5;
 
             border: solid lightgray 1px;
-            border-radius: 0px 14px 14px 0px;
+            border-radius: 14px;
 
             text-align: center;
             overflow: hidden;

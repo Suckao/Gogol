@@ -27,12 +27,12 @@ class HomeController extends AbstractController
                 "icon" => "fas fa-bullhorn"
             ],
             [
-                "name" => "Profil",
-                "icon" => "fas fa-cat"
+                "name" => "Vidéos",
+                "icon" => "fas fa-video"
             ],
             [
-                "name" => "À propos",
-                "icon" => "fas fa-comment-dots"
+                "name" => "Profil",
+                "icon" => "fas fa-cat"
             ],
             [
                 "name" => "Contact",
