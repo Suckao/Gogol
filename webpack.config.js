@@ -24,7 +24,7 @@ Encore
 
     .addEntry('app-scss', './assets/styles/app.scss')
     .addEntry('index-scss', './assets/styles/index.scss')
-
+    .addEntry('articles-scss', './assets/styles/articles.scss')
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 

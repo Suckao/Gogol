@@ -27,11 +27,22 @@ class ArticleController extends AbstractController
     {
         $articles = $this->articleRepository->findAllArticleWithContent();
 
-        $menu = $this->menuService->createMenu();
-        
+        $menu = $this->menuService->createMenu('articles',true);
         return $this->render('article/articles.html.twig', [
             'menu' => $menu,
             'articles' => $articles
+        ]);
+    }
+
+    #[Route('/articles/{id}', name: 'article_infos')]
+    public function showArticle($id): Response
+    {
+        $article = $this->articleRepository->findOneByIdWithContent($id);
+
+        $menu = $this->menuService->createMenu($article[0]->getTitle());
+
+        return $this->render('article/articleShow.html.twig', [
+            'menu' => $menu,
         ]);
     }
 }

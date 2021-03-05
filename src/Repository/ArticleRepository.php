@@ -37,7 +37,7 @@ class ArticleRepository extends ServiceEntityRepository
             return $results;
     }
 
-        /**
+    /**
      * @return Article[] Returns an array of Article objects
      */
     public function findAllArticleWithContent()
@@ -53,6 +53,23 @@ class ArticleRepository extends ServiceEntityRepository
             $results = $qb->getQuery()->getResult();
 
             return $results;
+    }
+
+    /** 
+    * @return Article[] 
+    */
+    public function findOneByIdWithContent($id) 
+    {
+        $qb = $this->createQueryBuilder('a');
+        $qb -> select('a','c','ct')
+        ->join('a.content', 'c')
+        ->join('c.thematics', 'ct')
+        ->andWhere('a.id = :val')
+        ->setParameter('val', $id)
+        ->orderBy('c.publicationDate', 'ASC');
+        $results = $qb->getQuery()->getResult();
+
+        return $results;
     }
 
     // /**

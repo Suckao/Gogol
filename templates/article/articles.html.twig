@@ -1,11 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Hello ArticleController!
+{% endblock %}
 
 {% block body %}
-<ul> 
-{% for article in articles %}
-    <li>{{article.title}} </li>
-{% endfor %}
-</ul>
+	<div class="articles-list">
+		{% for article in articles %}
+			<div class="article">
+				{% if article.picture %}
+					<img src="{{article.picture}}">
+				{% else %}
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm81XoZa9dFFAFPY-LjxgJ-XAj-KeySicSvw&usqp=CAU">
+				{% endif %}
+
+				<div class="article-details">
+					<div>
+                        <h3> {{article.title}} </h3>
+						<p>
+							description courte description courte description courte description courte description courte
+						</p>
+					</div>
+					<div class="thematics">
+						<h3>
+							Thematiques
+						</h3>
+						<ul>
+							{% for theme in article.content.thematics%}
+								<li style="color : {{theme.color}}; background-color : {{theme.bgColor}}">
+									{{theme.name}}
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+                    <a href="{{path('article_infos', {'id':article.id})}}"> Voir </a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}

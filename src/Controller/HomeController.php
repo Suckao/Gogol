@@ -20,7 +20,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        $menu = $this->menuService->createMenu();
+        $menu = $this->menuService->createMenu('Gogol', true);
         
         $article = $this->articleRepository->findArticleByPublishContent();
 

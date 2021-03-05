@@ -38,10 +38,10 @@ body {
         display: flex;
 
         width: 90%;
-        height: 110%;
+        height: 80%;
         
         & .border-menu {
-            flex-grow: 0.5;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,7 +55,8 @@ body {
             text-align: center;
             overflow: hidden;
             padding: 0px;
-            max-width: 200px;
+            min-width: 15%;
+            
 
             & > ul {
                 list-style-type: none;
