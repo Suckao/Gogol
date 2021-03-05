@@ -28,6 +28,7 @@ class ArticleController extends AbstractController
         $articles = $this->articleRepository->findAllArticleWithContent();
 
         $menu = $this->menuService->createMenu();
+        
         return $this->render('article/articles.html.twig', [
             'menu' => $menu,
             'articles' => $articles

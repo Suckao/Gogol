@@ -22,7 +22,7 @@
 		</head>
 	<body>
 		<div class="title-bar">
-			<h1>{{menu.title}}</h1>
+			<h1><a href="{{path(menu.title.route)}}">{{menu.title.name}}</a></h1>
 		</div>
 		<div class="container">
 			<div class="border-menu">
@@ -30,7 +30,7 @@
 					{% for menuTitle in menu.leftMenuTitle %}
 						<li>
 							<div>
-								<a href="#">{{menuTitle.name}}</a>
+								<a href="{{path(menuTitle.route)}}">{{menuTitle.name}}</a>
 								<i class="{{menuTitle.icon}}"></i>
 							</div>
 						</li>

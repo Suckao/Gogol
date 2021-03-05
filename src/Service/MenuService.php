@@ -6,7 +6,10 @@ class MenuService
 {
     public function createMenu() : array
     {
-        $title = "Gogol";
+        $title = array(
+            "name" => "Gogol",
+            "route" => "home"
+        );
 
         $leftMenuTitle = array(
             [

@@ -25,6 +25,13 @@ body {
         font-size: 4em;
         font-family: 'Indie Flower', cursive;
         margin-bottom: 20px;
+        
+        & > h1 {
+            & > a {
+                text-decoration: none;
+                color: white;
+            }
+        }
     }
 
     & .container {
