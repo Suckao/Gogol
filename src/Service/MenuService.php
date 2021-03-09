@@ -9,12 +9,16 @@ class MenuService
     public function createMenu($title, $leftMenu = null) : array
     {
         $title = array(
-            "name" => $title,
-            "route" => "home"
+            "name" => $title
         );
 
         if($leftMenu) {
             $leftMenuTitle = array(
+                [
+                    "name" => "Gogol",
+                    "icon" => "fas fa-home",
+                    "route" => "home"
+                ],
                 [
                     "name" => "Articles",
                     "icon" => "fas fa-bullhorn",

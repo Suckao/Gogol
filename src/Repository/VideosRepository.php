@@ -19,6 +19,24 @@ class VideosRepository extends ServiceEntityRepository
         parent::__construct($registry, Videos::class);
     }
 
+        /**
+     * @return Article[] Returns an array of Article objects
+     */
+    public function findAllVideosWithContent()
+    {
+        $value = 1;
+            $qb = $this->createQueryBuilder('v');
+            $qb ->select('v', 'c', 'ct')
+            ->join('v.content', 'c')
+            ->join('c.thematics', 'ct')
+            ->andWhere('c.published = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.publicationDate', 'ASC');
+            $results = $qb->getQuery()->getResult();
+
+            return $results;
+    }
+
     // /**
     //  * @return Videos[] Returns an array of Videos objects
     //  */

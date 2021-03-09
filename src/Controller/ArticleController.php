@@ -39,7 +39,7 @@ class ArticleController extends AbstractController
     {
         $article = $this->articleRepository->findOneByIdWithContent($id);
 
-        $menu = $this->menuService->createMenu($article[0]->getTitle());
+        $menu = $this->menuService->createMenu($article[0]->getTitle(), true);
 
         return $this->render('article/articleShow.html.twig', [
             'menu' => $menu,
