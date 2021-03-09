@@ -50,10 +50,16 @@ class Content
      */
     private $articles;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Videos::class, mappedBy="content")
+     */
+    private $videos;
+
     public function __construct()
     {
         $this->thematics = new ArrayCollection();
         $this->articles = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -157,6 +163,36 @@ class Content
             // set the owning side to null (unless already changed)
             if ($article->getContent() === $this) {
                 $article->setContent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Videos[]
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    public function addVideo(Videos $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $this->videos[] = $video;
+            $video->setContent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Videos $video): self
+    {
+        if ($this->videos->removeElement($video)) {
+            // set the owning side to null (unless already changed)
+            if ($video->getContent() === $this) {
+                $video->setContent(null);
             }
         }
 
